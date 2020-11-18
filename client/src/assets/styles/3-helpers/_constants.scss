@@ -2,6 +2,8 @@
 
 $main-light-color: #e1e1e1;
 $main-dark-color: #2f2f2f;
+$main-mixed-color: #acacac;
 $text-light-color: #e7e7e7;
 $text-dark-color: #343434;
-$text-brand-color: #F7B300;
+$brand-color: #F7B300;
+$brand-color-darken: darken($brand-color, 4%);

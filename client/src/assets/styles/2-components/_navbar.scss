@@ -14,7 +14,7 @@
         position: relative;
         display: block;
         @include box(50%, 4px);
-        background-color: $text-brand-color;
+        background-color: $brand-color;
         float: left;
         transform-origin: center center;
         transition: transform 250ms ease;
@@ -91,7 +91,7 @@
         text-decoration: none;
 
         &:hover {
-            color: $text-brand-color;
+            color: $brand-color;
         }
     }
 }
