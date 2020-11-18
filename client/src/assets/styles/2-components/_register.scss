@@ -4,11 +4,15 @@
     margin: 3rem;
     border: 3px solid $brand-color;
     border-radius: 1.3rem;
+    overflow: hidden;
 
     &__tabs {
         @include flex-center;
         @include box(100%, 3rem);
         list-style-type: none;
+        background-color: $main-light-color;
+        border-radius: 1.1rem 1.1rem 0 0;
+        overflow-y: hidden;
     }
 
     &__tab {
@@ -19,13 +23,13 @@
         border-radius: 1.1rem 1.1rem 0 0;
         font-size: 1.5rem;
         font-weight: 500;
-        background-color: $main-light-color;
         color: $text-dark-color;
 
         &--active {
             background-color: $main-dark-color;
             color: $text-light-color;
             cursor: auto;
+            box-shadow: 3px 3px 10px 5px rgba(0,0,0,0.34);
         }
     }
 
