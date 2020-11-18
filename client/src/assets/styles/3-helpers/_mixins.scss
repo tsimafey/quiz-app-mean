@@ -1,0 +1,30 @@
+@mixin box($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin font($family, $size, $weight, $uppercase, $spacing) {
+    font-family: $family, serif;
+    font-size: $size;
+    font-weight: $weight;
+    @if $uppercase==uppercase {
+        text-transform: uppercase;
+    }
+    letter-spacing: $spacing;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-center-column {
+    @include flex-center;
+    flex-direction: column;
+}

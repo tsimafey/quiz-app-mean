@@ -2,12 +2,8 @@
     position: fixed;
 	top: 20px;
 	left: 20px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	width: 60px;
-	height: 60px;
+	@include flex-center-column;
+    @include box(60px);
 	background-color: $main-light-color;
 	border-radius: 50%;
 	transition: transform 250ms ease;
@@ -17,8 +13,7 @@
     span {
         position: relative;
         display: block;
-        width: 50%;
-        height: 4px;
+        @include box(50%, 4px);
         background-color: $text-brand-color;
         float: left;
         transform-origin: center center;
@@ -68,8 +63,7 @@
     position: fixed;
     top: 0;
     left: -25rem;
-    width: 25rem;
-    height: 100%;
+    @include box(25rem, 100%);
     margin: 0;
 	padding: 0;
     background-color: $main-dark-color;
@@ -91,11 +85,13 @@
     &__link {
         position: relative;
         display: block;
-        padding: 15px 20px;
+        padding: 10px 20px;
         color: $text-light-color;
-        font-size: 2rem;
-        font-weight: bold;
+        @include font('Martel', 2rem, 900, uppercase, 2px);
         text-decoration: none;
-        text-transform: uppercase;
+
+        &:hover {
+            color: $text-brand-color;
+        }
     }
 }
