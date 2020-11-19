@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
+import { AuthService } from '../../services';
 
 interface Tab {
   title: string;
@@ -24,8 +27,13 @@ export class RegisterComponent implements OnInit {
     }
   ];
   selectedTab: Tab = this.tabs[0];
+  // submitted = false;
+  loading = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -43,6 +51,26 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value)
     console.log(this.form)
+
+    // this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.loading = true;
+
+    this.authService.signup(this.form.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          console.log('next')
+        },
+        error: () => {
+          this.loading = false;
+          console.log('error')
+        }
+      })
   }
 
   onSelectTab(tab: Tab) {
