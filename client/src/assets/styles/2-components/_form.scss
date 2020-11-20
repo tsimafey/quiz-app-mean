@@ -1,0 +1,45 @@
+.form {
+    background-color: $main-dark-color;
+    border: 3px solid $brand-color;
+    border-radius: 1rem;
+
+    &__element {
+        @include flex-column;
+        padding: 1rem;
+    }
+
+    &__label {
+        margin-bottom: 0.3rem;
+        color: $text-light-color;
+        font-weight: 500;
+    }
+
+    &__input {
+        outline: none;
+        background-color: $main-light-color;
+        height: 3rem;
+        line-height: 3rem;
+        font-size: 2rem;
+        padding-left: 1rem;
+        font-family: 'Ubuntu', sans-serif;
+        color: $text-dark-color;
+        border: 2px solid $main-mixed-color;
+        border-radius: 3px;
+
+        &--invalid {
+            border-color: $error-dark-color;
+            background-color: $error-light-color;
+        }
+    }
+
+    &__error-block {
+        @include flex-center;
+        margin-top: 0.2rem;
+    }
+
+    &__error {
+        text-align: center;
+        color: $error-dark-color;
+        font-weight: 500;
+    }
+}

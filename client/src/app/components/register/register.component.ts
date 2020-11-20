@@ -27,8 +27,8 @@ export class RegisterComponent implements OnInit {
     }
   ];
   selectedTab: Tab = this.tabs[0];
-  // submitted = false;
-  loading = false;
+  submitted: boolean = false;
+  loading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,15 +44,17 @@ export class RegisterComponent implements OnInit {
         Validators.pattern(/^[0-9a-zA-Z]+$/)
       ]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(7)]]
     });
   }
+
+  get f() { return this.form.controls; }
 
   onSubmit() {
     console.log(this.form.value)
     console.log(this.form)
 
-    // this.submitted = true;
+    this.submitted = true;
 
     if (this.form.invalid) {
       return;
