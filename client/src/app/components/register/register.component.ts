@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          console.log('next')
+          // window.location.reload();
         },
         error: () => {
           this.loading = false;

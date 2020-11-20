@@ -1,6 +1,6 @@
 const db = require("../models");
 const ROLES = db.ROLES;
-const User = db.user;
+const User = db.users;
 
 checkDuplicateUsernameOrEmail = (req, res, next) => {
     User.findOne({
@@ -12,7 +12,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         }
 
         if (user) {
-            res.status(400).send({ message: "Failed! Username is already in use!" });
+            res.status(400).send({ message: "Username is already in use" });
             return;
         }
 
@@ -25,13 +25,21 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
             }
     
             if (user) {
-                res.status(400).send({ message: "Failed! Email is already in use!" });
+                res.status(400).send({ message: "Email is already in use" });
                 return;
             }
 
             next();
         });
     });
+};
+
+checkPassword = (req, res, next) => {
+    if (req.body.password.length < 7) {
+        res.status(400).send({ message: "Password must be at least 7 characters long" });
+        return;
+    }
+    next();
 };
 
 checkRolesExisted = (req, res, next) => {
@@ -51,6 +59,7 @@ checkRolesExisted = (req, res, next) => {
 
 const verifySignUp = {
     checkDuplicateUsernameOrEmail,
+    checkPassword,
     checkRolesExisted
 };
 
