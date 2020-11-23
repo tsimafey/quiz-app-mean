@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthService } from '../../services';
+import { AuthService, AlertService } from '../../services';
 
 interface Tab {
   title: string;
@@ -33,6 +33,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +56,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.form)
 
     this.submitted = true;
+    this.alertService.clear();
 
     if (this.form.invalid) {
       return;
@@ -66,11 +68,13 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
+          
           // window.location.reload();
         },
-        error: () => {
+        error: ({ error }) => {
+          console.log(error)
           this.loading = false;
-          console.log('error')
+          this.alertService.error(error.message);
         }
       })
   }

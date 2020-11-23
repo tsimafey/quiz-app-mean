@@ -1,3 +1,4 @@
 import { User } from './user';
+import { Alert, AlertType } from './alert';
 
-export { User };
+export { User, Alert, AlertType };
