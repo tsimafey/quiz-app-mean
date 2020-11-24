@@ -32,13 +32,10 @@ export class AlertComponent implements OnInit, OnDestroy {
           return;
         }
 
-        console.log(this.alerts)
-        console.log(alert)
-
         this.alerts.push(alert);
 
         if (alert.autoClose) {
-          setTimeout(() => this.removeAlert(alert), 3000)
+          setTimeout(() => this.removeAlert(alert), 2500)
         }
       });
 
@@ -66,6 +63,25 @@ export class AlertComponent implements OnInit, OnDestroy {
     } else {
       this.alerts = this.alerts.filter((x) => x !== alert);
     }
+  }
+
+  getClasses(alert: Alert) {
+    if (!alert) return;
+
+    const classes = ['alert'];
+
+    const alertTypeClass = {
+      [AlertType.Success]: 'alert-success',
+      [AlertType.Error]: 'alert-error',
+      [AlertType.Info]: 'alert-info',
+      [AlertType.Warning]: 'alert-warning',
+    }
+
+    classes.push(alertTypeClass[alert.type]);
+
+    console.log(classes.join(' '))
+
+    return classes.join(' ')
   }
 
 }

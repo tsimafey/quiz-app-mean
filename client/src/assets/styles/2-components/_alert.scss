@@ -1,0 +1,46 @@
+.alert {
+    position: fixed;
+    top: 1rem;
+    left: 7rem;
+    right: 7rem;
+    height: 4rem;
+    @include flex-center;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 1rem;
+    color: $text-dark-color;
+    opacity: 0.8;
+
+    &-success {
+        background-color: $success-light-color;
+        border-color: $success-dark-color;
+    }
+
+    &-error {
+        background-color: $error-light-color;
+        border-color: $error-dark-color;
+    }
+
+    &-info {
+        background-color: $info-light-color;
+        border-color: $info-dark-color;
+    }
+
+    &-warning {
+        background-color: $warning-light-color;
+        border-color: $warning-dark-color;
+    }
+
+    &__x {
+        flex-basis: 4rem;
+        text-align: center;
+        font-size: 2rem;
+        transform: translateY(-2px);
+        cursor: pointer;
+    }
+
+    &__text {
+        flex-grow: 1;
+        font-weight: 500;
+    }
+}

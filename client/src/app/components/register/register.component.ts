@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
         error: ({ error }) => {
           console.log(error)
           this.loading = false;
-          this.alertService.error(error.message);
+          this.alertService.error(error.message, { autoClose: true });
         }
       })
   }
