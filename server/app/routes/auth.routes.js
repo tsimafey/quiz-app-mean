@@ -20,8 +20,8 @@ module.exports = function(app) {
         controller.signup
     );
 
-    // app.post(
-    //     "/signin", 
-    //     controller.signin
-    // );
+    app.post(
+        "/auth/signin", 
+        controller.signin
+    );
 };

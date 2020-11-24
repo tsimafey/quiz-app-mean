@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
 
 import { AuthService, AlertService } from '@app/services';
 
@@ -21,21 +22,36 @@ export class SigninFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      username: ['', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(25),
-        Validators.pattern(/^[0-9a-zA-Z]+$/)
-      ]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(7)]]
+      usernameEmail: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
   get f() { return this.form.controls; }
 
   onSubmit() {
-    console.log('signin')
+    this.submitted = true;
+    this.alertService.clear();
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.loading = true;
+
+    this.authService.signin(this.form.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          console.log('signin')
+          // window.location.reload();
+        },
+        error: ({ error }) => {
+          console.log(error)
+          this.loading = false;
+          this.alertService.error(error.message, { autoClose: true });
+        }
+      })
   }
 
 }
