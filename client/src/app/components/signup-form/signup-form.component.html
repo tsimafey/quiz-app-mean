@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="sign-form__block">
+    <div class="form__element">
+        <label for="username" class="form__label">Username</label>
+        <input type="text" formControlName="username" class="form__input" [ngClass]="{ 'form__input--invalid': submitted && f.username.errors }">
+        <div *ngIf="submitted && f.username.errors" class="form__error-block">
+            <span *ngIf="f.username.errors.required" class="form__error">Username is required</span>
+            <span *ngIf="f.username.errors.minlength" class="form__error">Username should contain at least 4 characters</span>
+            <span *ngIf="f.username.errors.maxlength" class="form__error">Username shouldn't contain more than 25 characters</span>
+            <span *ngIf="f.username.errors.pattern" class="form__error">Username should only contain latin symbols and numbers</span>
+        </div>
+    </div>
+    <div class="form__element">
+        <label for="email" class="form__label">Email</label>
+        <input type="email" formControlName="email" class="form__input" [ngClass]="{ 'form__input--invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="form__error-block">
+            <span *ngIf="f.email.errors.required" class="form__error">Email is required</span>
+            <span *ngIf="f.email.errors.email" class="form__error">Invalid email address</span>
+        </div>
+    </div>
+    <div class="form__element">
+        <label for="password" class="form__label">Password</label>
+        <input type="password" formControlName="password" class="form__input" [ngClass]="{ 'form__input--invalid': submitted && f.password.errors }">
+        <div *ngIf="submitted && f.password.errors" class="form__error-block">
+            <span *ngIf="f.password.errors.required" class="form__error">Password is required</span>
+            <span *ngIf="f.password.errors.minlength" class="form__error">Password should contain at least 7 characters</span>
+        </div>
+    </div>
+    <div class="form__element sign-form__bottom">
+        <button type="submit" class="primary-button">Sign up for Quiz</button>
+    </div>
+</form>

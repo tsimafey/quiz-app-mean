@@ -1,0 +1,12 @@
+<div class="form sign-form">
+    <ul class="sign-form__tabs">
+        <li *ngFor="let tab of tabs" (click)="onSelectTab(tab)" class="sign-form__tab" [ngClass]="tab.isActive ? 'sign-form__tab--active' : ''">{{tab.title}}</li>
+    </ul>
+    <div *ngIf="selectedTab.title === 'Sign up'; then signup_form else signin_form"></div>
+    <ng-template #signup_form>
+        <app-signup-form></app-signup-form>
+    </ng-template>
+    <ng-template #signin_form>
+        <app-signin-form></app-signin-form>
+    </ng-template>
+</div>

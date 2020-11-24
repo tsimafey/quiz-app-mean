@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthService, AlertService } from '../../services';
+import { AuthService, AlertService } from '@app/services';
 
 interface Tab {
   title: string;
@@ -10,11 +10,11 @@ interface Tab {
 }
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-sign-form',
+  templateUrl: './sign-form.component.html',
+  styleUrls: ['./sign-form.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class SignFormComponent implements OnInit {
   form: FormGroup;
   tabs: Tab[] = [
     {
