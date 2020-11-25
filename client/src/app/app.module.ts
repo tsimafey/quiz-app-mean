@@ -13,6 +13,7 @@ import { SignFormComponent } from './components/sign-form/sign-form.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { SigninFormComponent } from './components/signin-form/signin-form.component';
+import { AuthUserDirective } from './directives/auth-user.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SigninFormComponent } from './components/signin-form/signin-form.compon
     SignFormComponent,
     AlertComponent,
     SignupFormComponent,
-    SigninFormComponent
+    SigninFormComponent,
+    AuthUserDirective
   ],
   imports: [
     BrowserModule,

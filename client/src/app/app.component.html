@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
 <app-alert></app-alert>
 <main class="layout__container">
+  <div *ngIf="this.isAuthorized === true; then auth_block else unauth_block"></div>
+  <ng-template #auth_block></ng-template>
+  <ng-template #unauth_block>
   <div></div>
   <app-sign-form></app-sign-form>
+  </ng-template>
 </main>
