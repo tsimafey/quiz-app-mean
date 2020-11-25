@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
+import { NgxSpinnerService } from "ngx-spinner";
 import { AuthService, AlertService } from '@app/services';
 
 @Component({
@@ -18,6 +19,7 @@ export class SignupFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private alertService: AlertService,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -36,9 +38,6 @@ export class SignupFormComponent implements OnInit {
   get f() { return this.form.controls; }
 
   onSubmit() {
-    console.log(this.form.value)
-    console.log(this.form)
-
     this.submitted = true;
     this.alertService.clear();
 
@@ -47,6 +46,7 @@ export class SignupFormComponent implements OnInit {
     }
 
     this.loading = true;
+    this.spinner.show();
 
     this.authService.signup(this.form.value)
       .pipe(first())
@@ -55,8 +55,8 @@ export class SignupFormComponent implements OnInit {
           window.location.reload();
         },
         error: ({ error }) => {
-          console.log(error)
           this.loading = false;
+          this.spinner.hide();
           this.alertService.error(error.message, { autoClose: true });
         }
       })

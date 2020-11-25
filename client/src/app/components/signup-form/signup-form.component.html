@@ -26,6 +26,14 @@
         </div>
     </div>
     <div class="form__element sign-form__bottom">
-        <button type="submit" class="primary-button">Sign up for Quiz</button>
+        <div *ngIf="loading === true; then spinner else button"></div>
+        <ng-template #spinner>
+            <div class="spinner-block">
+                <ngx-spinner [fullScreen]="false" type="ball-square-clockwise-spin" color="#F7B300" bdColor="#2f2f2f" size="medium"></ngx-spinner>
+            </div>
+        </ng-template>
+        <ng-template #button>
+            <button type="submit" class="primary-button">Sign up for Quiz</button>
+        </ng-template>
     </div>
 </form>
