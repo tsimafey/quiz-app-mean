@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   isAuthorized() {
-    return !!this.user;
+    return !!this.userSubject.value;
   }
 
   signup(user: User) {
@@ -37,5 +37,12 @@ export class AuthService {
         this.userSubject.next(user);
         return user;
       }))
+  }
+
+  signout() {
+    console.log('signout')
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
+    window.location.reload();
   }
 }

@@ -38,7 +38,6 @@
         background-color: $main-dark-color;
 
         span {
-            // background-color: $main-light-color;
 
             &:nth-of-type(1) {
 				transform: translateY(2px) rotate(45deg);
@@ -56,6 +55,25 @@
 
     &:checked ~ .navbar {
         left: 0;
+    }
+
+    @keyframes container-right {
+        from { 
+            padding-left: 12.5rem;
+            padding-right: 12.5rem;
+        }
+        to   { 
+            padding-left: 25rem;
+            padding-right: 0;
+        }
+    }
+
+    &:checked ~ .outer-container > .inner-container {
+        animation-duration: 0.28s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+        animation-delay: 0.15s;
+        animation-name: container-right;
     }
 }
 

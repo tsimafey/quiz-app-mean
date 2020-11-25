@@ -43,8 +43,7 @@ export class SigninFormComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          console.log('signin')
-          // window.location.reload();
+          window.location.reload();
         },
         error: ({ error }) => {
           console.log(error)

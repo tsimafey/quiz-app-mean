@@ -52,8 +52,7 @@ export class SignupFormComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          
-          // window.location.reload();
+          window.location.reload();
         },
         error: ({ error }) => {
           console.log(error)
