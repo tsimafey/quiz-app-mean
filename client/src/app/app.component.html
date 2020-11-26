@@ -24,25 +24,6 @@
 <app-alert></app-alert>
 <div class="outer-container">
   <div class="inner-container">
-    <div *ngIf="this.isAuthorized === true; then auth_block else unauth_block"></div>
-    <ng-template #auth_block>
-      <div class="main__top">
-        <div class="main__signout-block">
-          <app-signout-button></app-signout-button>
-        </div>
-        <h2 class="main__header">Most popular quizes</h2>
-        <div class="main__top-grid-block">
-          <div class="main__top-grid-element"></div>
-          <div class="main__top-grid-element"></div>
-          <div class="main__top-grid-element"></div>
-          <div class="main__top-grid-element"></div>
-          <div class="main__top-grid-element"></div>
-        </div>
-      </div>
-    </ng-template>
-    <ng-template #unauth_block>
-    <div></div>
-    <app-sign-form></app-sign-form>
-    </ng-template>
+    <router-outlet></router-outlet>
   </div>
 </div>

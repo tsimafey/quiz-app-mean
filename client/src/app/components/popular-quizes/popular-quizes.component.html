@@ -1,0 +1,7 @@
+<h2 class="popular-quizes__header">Most popular quizes</h2>
+<div class="popular-quizes__grid-block">
+    <div class="popular-quizes__element" *ngFor="let quiz of popularQuizes">
+        <img src="{{quiz.image}}" class="popular-quizes__image">
+        <p class="popular-quizes__title">{{quiz.title}}</p>
+    </div>
+</div>

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AuthService } from '@app/services';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +7,6 @@ import { AuthService } from '@app/services';
 })
 export class AppComponent {
 
-  constructor(
-    private authService: AuthService,
-  ) { }
+  constructor() { }
 
-  isAuthorized: boolean = this.authService.isAuthorized();
 }

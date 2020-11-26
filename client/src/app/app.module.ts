@@ -15,6 +15,8 @@ import { SignupFormComponent } from './components/signup-form/signup-form.compon
 import { SigninFormComponent } from './components/signin-form/signin-form.component';
 import { AuthUserDirective } from './directives/auth-user.directive';
 import { SignoutButtonComponent } from './components/signout-button/signout-button.component';
+import { HomeComponent } from './pages/home/home.component';
+import { PopularQuizesComponent } from './components/popular-quizes/popular-quizes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SignoutButtonComponent } from './components/signout-button/signout-butt
     SignupFormComponent,
     SigninFormComponent,
     AuthUserDirective,
-    SignoutButtonComponent
+    SignoutButtonComponent,
+    HomeComponent,
+    PopularQuizesComponent
   ],
   imports: [
     BrowserModule,

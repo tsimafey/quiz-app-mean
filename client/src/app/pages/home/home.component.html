@@ -1,0 +1,21 @@
+<div *ngIf="this.isAuthorized === true; then auth_block else unauth_block"></div>
+<ng-template #auth_block>
+    <div class="home">
+        <div class="home__top">
+            <app-popular-quizes [popularQuizes]="this.popularQuizes"></app-popular-quizes>
+            <div class="signout-block">
+                <app-signout-button></app-signout-button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #unauth_block>
+    <div class="home">
+        <div class="home__top">
+            <app-popular-quizes [popularQuizes]="this.popularQuizes"></app-popular-quizes>
+            <div class="home__sign-form-block">
+                <app-sign-form></app-sign-form>
+            </div>
+        </div>
+    </div>
+</ng-template>
